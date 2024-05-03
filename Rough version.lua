@@ -1,10 +1,11 @@
 setToParent = game.Lighting
 githubUser = "Roblox-Thot"
 githubRepo = "random-shit"
+auth = ''
 
 local HttpService=game:GetService('HttpService')
 local toJson=function(str)return HttpService:JSONDecode(str) end
-local request=function(dict)return HttpService:RequestAsync(dict)end
+local request=function(dict) dict['Headers'] ={Authorization='Bearer '..auth} return HttpService:RequestAsync(dict)end
 
 local function createFolderHierarchy(path)
 	local folders = path:split("/")
